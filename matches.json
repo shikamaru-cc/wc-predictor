@@ -1,0 +1,53 @@
+{
+  "matches": [
+    {
+      "slug": "brazil-morocco",
+      "team1": "brazil", "team2": "morocco",
+      "name1": "巴西", "name2": "摩洛哥",
+      "flag1": "🇧🇷", "flag2": "🇲🇦",
+      "group": "C组", "time": "06:00", "venue": "MetLife 球场"
+    },
+    {
+      "slug": "qatar-switzerland",
+      "team1": "qatar", "team2": "switzerland",
+      "name1": "卡塔尔", "name2": "瑞士",
+      "flag1": "🇶🇦", "flag2": "🇨🇭",
+      "group": "B组", "time": "03:00", "venue": "Levi's 球场"
+    },
+    {
+      "slug": "haiti-scotland",
+      "team1": "haiti", "team2": "scotland",
+      "name1": "海地", "name2": "苏格兰",
+      "flag1": "🇭🇹", "flag2": "🏴󠁧󠁢󠁳󠁣󠁴󠁿",
+      "group": "C组", "time": "09:00", "venue": "波士顿"
+    },
+    {
+      "slug": "australia-turkey",
+      "team1": "australia", "team2": "turkey",
+      "name1": "澳大利亚", "name2": "土耳其",
+      "flag1": "🇦🇺", "flag2": "🇹🇷",
+      "group": "D组", "time": "12:00", "venue": "温哥华"
+    },
+    {
+      "slug": "germany-curacao",
+      "team1": "germany", "team2": "curacao",
+      "name1": "德国", "name2": "库拉索",
+      "flag1": "🇩🇪", "flag2": "🇨🇼",
+      "group": "E组", "time": "17:00", "venue": "休斯顿"
+    },
+    {
+      "slug": "netherlands-japan",
+      "team1": "netherlands", "team2": "japan",
+      "name1": "荷兰", "name2": "日本",
+      "flag1": "🇳🇱", "flag2": "🇯🇵",
+      "group": "F组", "time": "20:00", "venue": "达拉斯"
+    },
+    {
+      "slug": "ivory-coast-ecuador",
+      "team1": "ivory-coast", "team2": "ecuador",
+      "name1": "科特迪瓦", "name2": "厄瓜多尔",
+      "flag1": "🇨🇮", "flag2": "🇪🇨",
+      "group": "E组", "time": "23:00", "venue": "费城"
+    }
+  ]
+}

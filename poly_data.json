@@ -1,0 +1,61 @@
+{
+  "fetched_at": "2026-06-14T10:00:00",
+  "matches": {
+    "brazil-morocco": {
+      "url": "https://polymarket.com/sports/fifa-world-cup/fifwc-bra-mar-2026-06-13",
+      "home": "巴西",
+      "away": "摩洛哥",
+      "home_prob": 59.0,
+      "draw_prob": 26.0,
+      "away_prob": 17.0
+    },
+    "qatar-switzerland": {
+      "url": "https://polymarket.com/sports/fifa-world-cup/fifwc-qat-che-2026-06-13",
+      "home": "卡塔尔",
+      "away": "瑞士",
+      "home_prob": 6.0,
+      "draw_prob": 12.0,
+      "away_prob": 82.0
+    },
+    "haiti-scotland": {
+      "url": "https://polymarket.com/sports/fifa-world-cup/fifwc-hai-sco-2026-06-13",
+      "home": "海地",
+      "away": "苏格兰",
+      "home_prob": 17.0,
+      "draw_prob": 19.0,
+      "away_prob": 64.0
+    },
+    "australia-turkey": {
+      "url": "https://polymarket.com/sports/world-cup/fifwc-aus-tur-2026-06-14",
+      "home": "澳大利亚",
+      "away": "土耳其",
+      "home_prob": 19.0,
+      "draw_prob": 25.0,
+      "away_prob": 56.0
+    },
+    "germany-curacao": {
+      "url": "https://polymarket.com/sports/world-cup/fifwc-ger-kor-2026-06-14",
+      "home": "德国",
+      "away": "库拉索",
+      "home_prob": 94.0,
+      "draw_prob": 4.0,
+      "away_prob": 2.0
+    },
+    "netherlands-japan": {
+      "url": "https://polymarket.com/sports/fifa-world-cup/fifwc-nld-jpn-2026-06-14",
+      "home": "荷兰",
+      "away": "日本",
+      "home_prob": 47.0,
+      "draw_prob": 27.0,
+      "away_prob": 27.0
+    },
+    "ivory-coast-ecuador": {
+      "url": "https://polymarket.com/sports/world-cup/fifwc-civ-ecu-2026-06-14",
+      "home": "科特迪瓦",
+      "away": "厄瓜多尔",
+      "home_prob": 27.0,
+      "draw_prob": 33.0,
+      "away_prob": 40.0
+    }
+  }
+}
