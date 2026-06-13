@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>卡塔尔 vs 瑞士 — 世界杯数据解读</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f4ed; display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 12px; }
+    .card { width: 100%; max-width: 375px; background: #faf9f5; border-radius: 16px; padding: 24px 18px 20px; box-shadow: rgba(0,0,0,0.05) 0px 4px 24px; border: 1px solid #f0eee6; }
+    .hd { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:14px; }
+    .hd-left h1 { font-family: Georgia, serif; font-size: 20px; font-weight: 500; color: #141413; line-height: 1.2; }
+    .hd-left .sub { font-size: 10px; color: #87867f; margin-top: 2px; }
+    .hd-right { text-align: right; }
+    .hd-right .date { font-size: 13px; font-weight: 500; color: #c96442; }
+    .hd-right .info { font-size: 10px; color: #87867f; }
+    .disc { background:#f5f4ed; border-radius:8px; padding:6px 10px; margin-bottom:16px; border:1px solid #e8e6dc; }
+    .disc p { font-size:9px; color:#5e5d59; line-height:1.4; }
+    .top { display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; }
+    .tag { font-size:9px; font-weight:500; padding:2px 8px; border-radius:4px; }
+    .tag-g { background:#e8e6dc; color:#5e5d59; }
+    .tag-f { background:#c96442; color:#faf9f5; }
+    .tag-p { background:#141413; color:#b0aea5; }
+    .top .t { font-size:11px; color:#87867f; }
+    .top .v { font-size:9px; color:#87867f; margin-top:1px; text-align:right; }
+    .teams { display:flex; align-items:center; gap:8px; margin-bottom:10px; }
+    .tm { flex:1; display:flex; align-items:center; gap:8px; }
+    .tm.r { flex-direction:row-reverse; text-align:right; }
+    .fl { font-size:36px; width:42px; text-align:center; }
+    .ti .n { font-size:18px; font-weight:500; color:#141413; }
+    .ti .e { font-size:10px; color:#87867f; margin-top:1px; }
+    .dlta { text-align:center; min-width:56px; }
+    .dlta .a { font-size:13px; font-weight:500; color:#c96442; }
+    .dlta .l { font-size:8px; color:#87867f; }
+    .ob { display:flex; align-items:center; justify-content:center; gap:8px; background:#f5f4ed; border-radius:8px; padding:6px 12px; margin-bottom:8px; }
+    .ob .ol { font-size:8px; color:#87867f; letter-spacing:0.3px; text-transform:uppercase; }
+    .ob .ov { font-size:14px; font-weight:500; color:#141413; }
+    .ob .od { width:3px; height:3px; background:#d1cfc5; border-radius:50%; }
+    .pr { display:flex; align-items:center; gap:6px; margin-bottom:8px; }
+    .pr .pl { font-size:10px; color:#5e5d59; font-weight:500; min-width:48px; text-align:right; }
+    .pr .pl.r { text-align:left; }
+    .prt { flex:1; height:5px; background:#f0eee6; border-radius:5px; overflow:hidden; display:flex; }
+    .sh { height:100%; background:#141413; }
+    .sd { height:100%; background:#d1cfc5; }
+    .sa { height:100%; background:#c96442; }
+    .dg { display:flex; gap:4px; margin-bottom:8px; }
+    .dc { flex:1; background:#f5f4ed; border-radius:6px; padding:4px 6px; text-align:center; }
+    .dc .v { font-size:12px; font-weight:500; color:#141413; }
+    .dc .l { font-size:7px; color:#87867f; }
+    .ab { padding:8px 10px; background:#f5f4ed; border-radius:8px; border-left:2px solid #c96442; }
+    .ab p { font-size:10px; color:#5e5d59; line-height:1.5; }
+    .ab p strong { color:#141413; font-weight:500; }
+    .ab p .hl { color:#c96442; font-weight:500; }
+    .back { display:inline-block; margin-top:14px; padding:6px 12px; font-size:10px; color:#87867f; text-decoration:none; border:1px solid #e8e6dc; border-radius:8px; }
+    .ft { margin-top:14px; padding-top:10px; border-top:1px solid #f0eee6; display:flex; justify-content:space-between; font-size:8px; color:#87867f; }
+  </style>
+</head>
+<body>
+<div class="card">
+  <div class="hd">
+    <div class="hd-left"><h1>⚽ 世界杯数据</h1><div class="sub">Elo · 泊松模型</div></div>
+    <div class="hd-right"><div class="date">6/14</div><div class="info">B组</div></div>
+  </div>
+  <div class="disc"><p>纯数据分析，不构成投注建议。</p></div>
+  <div class="top">
+    <div><span class="tag tag-g">B组</span> </div>
+    <div><div class="t">03:00</div><div class="v">Levi's 球场</div></div>
+  </div>
+  <div class="teams">
+    <div class="tm"><div class="fl">🇶🇦</div><div class="ti"><div class="n">卡塔尔</div><div class="e">Elo 1511</div></div></div>
+    <div class="dlta"><div class="a">Δ−380</div><div class="l">实力差</div></div>
+    <div class="tm r"><div class="fl">🇨🇭</div><div class="ti"><div class="n">瑞士</div><div class="e">Elo 1891</div></div></div>
+  </div>
+  <div class="ob">
+    <span class="ol">模型推演</span>
+    <span class="ov">卡塔尔 15%</span><span class="od"></span>
+    <span class="ov">平 22%</span><span class="od"></span>
+    <span class="ov">瑞士 63%</span>
+  </div>
+  <div class="pr">
+    <span class="pl">卡塔尔 15%</span>
+    <div class="prt"><div class="sh" style="width:15%"></div><div class="sd" style="width:22%"></div><div class="sa" style="width:63%"></div></div>
+    <span class="pl r">瑞士 63%</span>
+  </div>
+  <div class="dg">
+    <div class="dc"><div class="v">λ 0.78</div><div class="l">卡塔尔</div></div>
+    <div class="dc"><div class="v">λ 1.59</div><div class="l">瑞士</div></div>
+    <div class="dc"><div class="v">−380</div><div class="l">Elo差</div></div>
+    <div class="dc"><div class="v">+46</div><div class="l">瑞士近况</div></div>
+  </div>
+  <div class="ab"><p><strong>瑞士</strong> Elo 碾压，世界杯常客经验丰富。<strong>卡塔尔</strong>上届小组赛3战全败出局。模型无明显冷门倾向。</p></div>
+  <a class="back" href="../index.html">← 返回列表</a>
+  <div class="ft"><span>eloratings.net · Dixon-Coles</span><span>#世界杯 #数据解读</span></div>
+</div>
+</body>
+</html>
