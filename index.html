@@ -2,139 +2,193 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>世界杯数据解读</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
+    
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
       background: #f5f4ed;
       display: flex;
       justify-content: center;
-      padding: 40px 20px;
+      align-items: flex-start;
+      min-height: 100vh;
+      padding: 12px;
     }
+
     .card {
-      width: 600px;
-      max-width: 100%;
+      width: 100%;
+      max-width: 375px;
       background: #faf9f5;
-      border-radius: 16px;
-      padding: 32px;
+      border-radius: 14px;
+      padding: 20px 16px 16px;
       box-shadow: rgba(0,0,0,0.05) 0px 4px 24px;
       border: 1px solid #f0eee6;
     }
-    .hd { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:28px; }
-    .hd-left h1 { font-family: Georgia, serif; font-size:28px; font-weight:500; color:#141413; line-height:1.2; }
-    .hd-left .sub { font-size:14px; color:#87867f; margin-top:4px; }
+
+    /* Header */
+    .hd { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:12px; }
+    .hd-left h1 { font-family: Georgia, 'Times New Roman', serif; font-size:20px; font-weight:500; color:#141413; line-height:1.2; }
+    .hd-left .sub { font-size:10px; color:#87867f; margin-top:1px; }
     .hd-right { text-align:right; flex-shrink:0; }
-    .hd-right .date { font-size:15px; font-weight:500; color:#c96442; }
-    .hd-right .info { font-size:12px; color:#87867f; }
-    .disclaimer { background:#f5f4ed; border-radius:8px; padding:8px 12px; margin-bottom:28px; border:1px solid #e8e6dc; }
-    .disclaimer p { font-size:12px; color:#5e5d59; line-height:1.5; }
-    .section-title { font-family:Georgia,serif; font-size:22px; font-weight:500; color:#141413; margin-bottom:16px; line-height:1.2; display:flex; align-items:center; gap:8px; }
-    .section-title::after { content:''; flex:1; height:1px; background:#e8e6dc; }
-    
-    .match { background:#fff; border-radius:12px; padding:20px; margin-bottom:12px; border:1px solid #f0eee6; }
-    .match.featured { border-color:#d1cfc5; background:#faf9f5; }
-    .match-top { display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; }
-    .tag { font-size:10px; font-weight:500; padding:2px 8px; border-radius:6px; }
-    .tag-group { background:#f5f4ed; color:#87867f; }
-    .tag-featured { background:#c96442; color:#faf9f5; }
-    .match-time { font-size:13px; color:#87867f; }
-    .match-venue { font-size:11px; color:#87867f; margin-top:2px; }
-    
-    .match-body { display:flex; align-items:center; gap:16px; margin-bottom:14px; }
-    .team { flex:1; display:flex; align-items:center; gap:10px; }
-    .team.r { flex-direction:row-reverse; text-align:right; }
-    .flag { font-size:32px; width:40px; text-align:center; flex-shrink:0; }
-    .team-info .name { font-size:16px; font-weight:500; color:#141413; }
-    .team-info .name.sm { font-size:14px; color:#5e5d59; }
-    .team-info .elo { font-size:11px; color:#87867f; }
-    .delta { flex-shrink:0; text-align:center; min-width:60px; }
-    .delta .arrow { font-size:13px; font-weight:500; color:#c96442; }
-    .delta .label { font-size:10px; color:#87867f; }
-    
-    .outcome-box { display:flex; align-items:center; justify-content:center; gap:12px; background:#f5f4ed; border-radius:8px; padding:8px 16px; margin-bottom:12px; }
-    .outcome-box .ol { font-size:10px; color:#87867f; letter-spacing:0.5px; text-transform:uppercase; }
-    .outcome-box .ov { font-size:16px; font-weight:500; color:#141413; }
-    .outcome-box .od { width:4px; height:4px; background:#d1cfc5; border-radius:50%; }
-    
-    .prob-row { display:flex; align-items:center; gap:8px; margin-bottom:12px; }
-    .prob-row .pl { font-size:11px; color:#5e5d59; font-weight:500; min-width:55px; text-align:right; }
-    .prob-row .pl.r { text-align:left; }
-    .prob-track { flex:1; height:6px; background:#f0eee6; border-radius:6px; overflow:hidden; display:flex; }
-    .sh { height:100%; background:#141413; border-radius:6px 0 0 6px; }
+    .hd-right .date { font-size:13px; font-weight:500; color:#c96442; }
+    .hd-right .info { font-size:10px; color:#87867f; }
+
+    /* Disclaimer - compact */
+    .disc { background:#f5f4ed; border-radius:6px; padding:5px 8px; margin-bottom:12px; border:1px solid #e8e6dc; }
+    .disc p { font-size:9px; color:#5e5d59; line-height:1.4; }
+
+    /* Section title */
+    .st { font-family:Georgia,serif; font-size:16px; font-weight:500; color:#141413; margin-bottom:8px; line-height:1.2; display:flex; align-items:center; gap:6px; }
+    .st::after { content:''; flex:1; height:1px; background:#e8e6dc; }
+
+    /* Featured match */
+    .fm { background:#faf9f5; border-radius:10px; padding:12px; margin-bottom:10px; border:1px solid #d1cfc5; }
+    .fmt { display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; }
+    .tag { font-size:9px; font-weight:500; padding:1px 6px; border-radius:4px; }
+    .tg { background:#e8e6dc; color:#5e5d59; }
+    .tf { background:#c96442; color:#faf9f5; }
+    .ftm { font-size:10px; color:#87867f; }
+
+    /* Teams row */
+    .fm-bd { display:flex; align-items:center; gap:6px; margin-bottom:6px; }
+    .tm { flex:1; display:flex; align-items:center; gap:6px; }
+    .tm.r { flex-direction:row-reverse; text-align:right; }
+    .fl { font-size:22px; width:28px; text-align:center; flex-shrink:0; }
+    .ti .n { font-size:13px; font-weight:500; color:#141413; }
+    .ti .e { font-size:9px; color:#87867f; }
+    .dlta { flex-shrink:0; text-align:center; min-width:48px; }
+    .dlta .a { font-size:11px; font-weight:500; color:#c96442; }
+    .dlta .l { font-size:8px; color:#87867f; }
+
+    /* Outcome bar */
+    .ob { display:flex; align-items:center; gap:6px; margin-bottom:6px; }
+    .ob .ol { font-size:8px; color:#87867f; letter-spacing:0.3px; text-transform:uppercase; white-space:nowrap; }
+    .ob .ov { font-size:12px; font-weight:500; color:#141413; white-space:nowrap; }
+    .ob .od { width:3px; height:3px; background:#d1cfc5; border-radius:50%; flex-shrink:0; }
+
+    /* Prob bar */
+    .pr { display:flex; align-items:center; gap:4px; margin-bottom:6px; }
+    .pr .pl { font-size:9px; color:#5e5d59; font-weight:500; min-width:42px; text-align:right; }
+    .pr .pl.r { text-align:left; }
+    .prt { flex:1; height:4px; background:#f0eee6; border-radius:4px; overflow:hidden; display:flex; }
+    .sh { height:100%; background:#141413; }
     .sd { height:100%; background:#d1cfc5; }
-    .sa { height:100%; background:#c96442; border-radius:0 6px 6px 0; }
-    
-    .data-grid { display:flex; gap:6px; }
-    .dc { flex:1; background:#f5f4ed; border-radius:8px; padding:6px 8px; text-align:center; }
-    .dc .v { font-size:13px; font-weight:500; color:#141413; }
-    .dc .l { font-size:9px; color:#87867f; margin-top:1px; }
-    
-    .ab { margin-top:12px; padding:10px 12px; background:#f5f4ed; border-radius:8px; border-left:2px solid #c96442; }
-    .ab p { font-size:12px; color:#5e5d59; line-height:1.6; }
+    .sa { height:100%; background:#c96442; }
+
+    /* Data mini grid */
+    .dg { display:flex; gap:4px; margin-bottom:6px; }
+    .dc { flex:1; background:#f5f4ed; border-radius:6px; padding:3px 4px; text-align:center; }
+    .dc .v { font-size:11px; font-weight:500; color:#141413; }
+    .dc .l { font-size:7px; color:#87867f; line-height:1.2; }
+
+    /* Analysis - one line only */
+    .ab { padding:4px 8px; background:#f5f4ed; border-radius:6px; border-left:1.5px solid #c96442; }
+    .ab p { font-size:9px; color:#5e5d59; line-height:1.4; }
     .ab p strong { color:#141413; font-weight:500; }
     .ab p .hl { color:#c96442; font-weight:500; }
-    
-    .mm { display:flex; align-items:center; padding:10px 0; border-bottom:1px solid #f0eee6; gap:8px; }
+
+    /* Mini match rows */
+    .mm { display:flex; align-items:center; padding:6px 0; border-bottom:1px solid #f0eee6; gap:4px; }
     .mm:last-of-type { border-bottom:none; }
-    .mmt { font-size:12px; color:#87867f; min-width:44px; font-weight:500; }
-    .mmg { font-size:10px; color:#87867f; background:#f5f4ed; padding:1px 6px; border-radius:4px; min-width:22px; text-align:center; }
-    .mmteams { flex:1; display:flex; align-items:center; gap:4px; }
-    .mmf { font-size:16px; }
-    .mmn { font-size:13px; color:#141413; }
+    .mmt { font-size:10px; color:#87867f; min-width:34px; font-weight:500; }
+    .mmg { font-size:8px; color:#87867f; background:#f5f4ed; padding:0 5px; border-radius:3px; min-width:18px; text-align:center; }
+    .mmteams { flex:1; display:flex; align-items:center; gap:2px; min-width:0; }
+    .mmf { font-size:14px; flex-shrink:0; }
+    .mmn { font-size:11px; color:#141413; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
     .mmn.sm { color:#5e5d59; }
-    .mmv { font-size:10px; color:#d1cfc5; }
-    .mmp { font-size:11px; font-weight:500; color:#5e5d59; min-width:36px; text-align:center; }
-    .mmbar { width:40px; height:4px; background:#f0eee6; border-radius:4px; overflow:hidden; display:flex; flex-shrink:0; }
-    .mmbar .sh { height:100%; background:#141413; border-radius:0; }
-    .mmbar .sd { height:100%; background:#d1cfc5; }
-    .mmbar .sa { height:100%; background:#c96442; border-radius:0; }
-    
-    .nd { display:flex; align-items:center; gap:8px; margin:4px 0; color:#87867f; font-size:10px; font-weight:500; text-transform:uppercase; letter-spacing:0.5px; }
+    .mmv { font-size:8px; color:#d1cfc5; flex-shrink:0; }
+    .mmbar { width:32px; height:3px; background:#f0eee6; border-radius:3px; overflow:hidden; display:flex; flex-shrink:0; }
+    .mmbar .sh { height:100%; }
+    .mmbar .sd { height:100%; }
+    .mmbar .sa { height:100%; }
+    .mmp { font-size:9px; font-weight:500; color:#5e5d59; min-width:28px; text-align:center; flex-shrink:0; }
+
+    .mm-pl { background:#f5f4ed; border-radius:6px; padding:6px 0; margin:3px 0; }
+
+    .nd { display:flex; align-items:center; gap:6px; margin:3px 0; color:#87867f; font-size:8px; font-weight:500; text-transform:uppercase; letter-spacing:0.3px; }
     .nd::after { content:''; flex:1; height:1px; background:#f0eee6; }
-    
-    .ft { margin-top:24px; padding-top:16px; border-top:1px solid #f0eee6; display:flex; justify-content:space-between; align-items:center; }
-    .ft .note { font-size:11px; color:#87867f; }
-    .ft .tags { font-size:11px; color:#5e5d59; font-weight:500; }
+
+    /* Footer */
+    .ft { margin-top:10px; padding-top:8px; border-top:1px solid #f0eee6; display:flex; justify-content:space-between; align-items:center; }
+    .ft .note { font-size:8px; color:#87867f; }
+    .ft .tags { font-size:9px; color:#5e5d59; font-weight:500; }
   </style>
 </head>
 <body>
-<div class="card" id="prediction-card">
+<div class="card" id="card">
+
   <div class="hd">
-    <div class="hd-left"><h1>⚽ 世界杯数据解读</h1><div class="sub">基于 Elo 评分 · Dixon-Coles 泊松模型</div></div>
-    <div class="hd-right"><div class="date" id="current-date">6月14日</div><div class="info">小组赛·第3日</div></div>
-  </div>
-  <div class="disclaimer"><p>纯数据分析内容，不构成任何投注建议。足球⚽不确定性高，请理性看球。</p></div>
-
-  <div class="section-title">焦点战</div>
-  <div class="match featured">
-    <div class="match-top">
-      <div><span class="tag tag-group">C组</span> <span class="tag tag-featured">数据看点</span></div>
-      <div style="text-align:right"><div class="match-time" id="match1-time">06:00 北京时间</div><div class="match-venue">MetLife 球场 · 新泽西</div></div>
+    <div class="hd-left">
+      <h1>⚽ 世界杯数据解读</h1>
+      <div class="sub">Elo · 泊松模型</div>
     </div>
-    <div class="match-body" id="match1-body">
-      <div class="team"><div class="flag">🇧🇷</div><div class="team-info"><div class="name">巴西</div><div class="elo">Elo 1991</div></div></div>
-      <div class="delta"><div class="arrow">Δ +164</div><div class="label">实力差</div></div>
-      <div class="team r"><div class="flag">🇲🇦</div><div class="team-info"><div class="name">摩洛哥</div><div class="elo">Elo 1827</div></div></div>
+    <div class="hd-right">
+      <div class="date" id="current-date">6/14</div>
+      <div class="info">小组赛</div>
     </div>
-    <div class="outcome-box"><span class="ol">模型推演</span><span class="ov">巴西胜率 52%</span><span class="od"></span><span class="ov">平 26%</span><span class="od"></span><span class="ov">摩洛哥 22%</span></div>
-    <div class="prob-row"><span class="pl">巴西 52%</span><div class="prob-track"><div class="sh" style="width:52%"></div><div class="sd" style="width:26%"></div><div class="sa" style="width:22%"></div></div><span class="pl r">摩洛哥 22%</span></div>
-    <div class="data-grid"><div class="dc"><div class="v">1.61</div><div class="l">λ 预期进球</div></div><div class="dc"><div class="v">0.93</div><div class="l">λ 预期进球</div></div><div class="dc"><div class="v">+164</div><div class="l">Elo 差</div></div><div class="dc"><div class="v">W17 D3</div><div class="l">巴西首战不败</div></div></div>
-    <div class="ab"><p><strong>巴西</strong> 内马尔伤缺，但维尼修斯+拉菲尼亚+恩德里克前场充足。<strong>摩洛哥</strong> 2022四强班底，但阿格尔德和马兹拉维伤缺。2023友谊赛曾 <span class="hl">2-1 击败巴西</span>。模型偏巴西小胜，但平局概率不低。</p></div>
   </div>
 
-  <div class="section-title" style="margin-top:24px">其他对阵</div>
+  <div class="disc"><p>纯数据分析，不构成投注建议。足球⚽不确定性高。</p></div>
+
+  <div class="st">🔥 焦点战</div>
+
+  <div class="fm">
+    <div class="fmt">
+      <div><span class="tag tg">C组</span> <span class="tag tf">数据看点</span></div>
+      <span class="ftm">06:00</span>
+    </div>
+    <div class="fm-bd">
+      <div class="tm"><div class="fl">🇧🇷</div><div class="ti"><div class="n">巴西</div><div class="e">Elo 1991</div></div></div>
+      <div class="dlta"><div class="a">Δ+164</div><div class="l">实力差</div></div>
+      <div class="tm r"><div class="fl">🇲🇦</div><div class="ti"><div class="n">摩洛哥</div><div class="e">Elo 1827</div></div></div>
+    </div>
+    <div class="ob">
+      <span class="ol">推演</span>
+      <span class="ov">巴西 52%</span>
+      <span class="od"></span>
+      <span class="ov">平 26%</span>
+      <span class="od"></span>
+      <span class="ov">摩洛哥 22%</span>
+    </div>
+    <div class="pr">
+      <span class="pl">巴西 52%</span>
+      <div class="prt"><div class="sh" style="width:52%"></div><div class="sd" style="width:26%"></div><div class="sa" style="width:22%"></div></div>
+      <span class="pl r">摩洛哥 22%</span>
+    </div>
+    <div class="dg">
+      <div class="dc"><div class="v">1.61</div><div class="l">λ预期进球</div></div>
+      <div class="dc"><div class="v">0.93</div><div class="l">λ预期进球</div></div>
+      <div class="dc"><div class="v">+164</div><div class="l">Elo差</div></div>
+      <div class="dc"><div class="v">W17D3</div><div class="l">巴西首战</div></div>
+    </div>
+    <div class="ab"><p><strong>巴西</strong>内马尔伤缺但前场充足。<strong>摩洛哥</strong>防线两核心伤缺。2023友谊赛曾<span class="hl">2-1胜巴西</span>。模型偏小胜，平局不低。</p></div>
+  </div>
+
+  <div class="st">📋 其他对阵</div>
+
   <div class="mm"><span class="mmt">03:00</span><span class="mmg">B</span><div class="mmteams"><span class="mmf">🇶🇦</span><span class="mmn sm">卡塔尔</span><span class="mmv">vs</span><span class="mmf">🇨🇭</span><span class="mmn">瑞士</span></div><div class="mmbar"><div class="sh" style="width:15%"></div><div class="sd" style="width:22%"></div><div class="sa" style="width:63%"></div></div><span class="mmp">63%</span></div>
-  <div class="mm"><span class="mmt">09:00</span><span class="mmg">C</span><div class="mmteams"><span class="mmf">🇭🇹</span><span class="mmn sm">海地</span><span class="mmv">vs</span><span class="mmf">🇬🇧</span><span class="mmn">苏格兰</span></div><div class="mmbar"><div class="sh" style="width:18%"></div><div class="sd" style="width:25%"></div><div class="sa" style="width:57%"></div></div><span class="mmp">57%</span></div>
+  <div class="mm"><span class="mmt">09:00</span><span class="mmg">C</span><div class="mmteams"><span class="mmf">🇭🇹</span><span class="mmn sm">海地</span><span class="mmv">vs</span><span class="mmf">🏴󠁧󠁢󠁳󠁣󠁴󠁿</span><span class="mmn">苏格兰</span></div><div class="mmbar"><div class="sh" style="width:18%"></div><div class="sd" style="width:25%"></div><div class="sa" style="width:57%"></div></div><span class="mmp">57%</span></div>
   <div class="mm"><span class="mmt">12:00</span><span class="mmg">D</span><div class="mmteams"><span class="mmf">🇦🇺</span><span class="mmn sm">澳大利亚</span><span class="mmv">vs</span><span class="mmf">🇹🇷</span><span class="mmn">土耳其</span></div><div class="mmbar"><div class="sh" style="width:26%"></div><div class="sd" style="width:26%"></div><div class="sa" style="width:48%"></div></div><span class="mmp">48%</span></div>
+
   <div class="nd">🌙 晚场</div>
+
   <div class="mm"><span class="mmt">17:00</span><span class="mmg">E</span><div class="mmteams"><span class="mmf">🇩🇪</span><span class="mmn">德国</span><span class="mmv">vs</span><span class="mmf">🇨🇼</span><span class="mmn sm">库拉索</span></div><div class="mmbar"><div class="sh" style="width:87%"></div><div class="sd" style="width:9%"></div><div class="sa" style="width:4%"></div></div><span class="mmp">87%</span></div>
-  <div class="mm" style="background:#f5f4ed;border-radius:8px;padding:10px 0;margin:4px 0"><span class="mmt">20:00</span><span class="mmg">F</span><div class="mmteams"><span class="mmf">🇳🇱</span><span class="mmn">荷兰</span><span class="mmv">vs</span><span class="mmf">🇯🇵</span><span class="mmn">日本</span></div><div class="mmbar"><div class="sh" style="width:36%"></div><div class="sd" style="width:33%"></div><div class="sa" style="width:31%"></div></div><span class="mmp">36%</span></div>
+  <div class="mm mm-pl"><span class="mmt">20:00</span><span class="mmg">F</span><div class="mmteams"><span class="mmf">🇳🇱</span><span class="mmn">荷兰</span><span class="mmv">vs</span><span class="mmf">🇯🇵</span><span class="mmn">日本</span></div><div class="mmbar"><div class="sh" style="width:36%"></div><div class="sd" style="width:33%"></div><div class="sa" style="width:31%"></div></div><span class="mmp">36%</span></div>
   <div class="mm"><span class="mmt">23:00</span><span class="mmg">E</span><div class="mmteams"><span class="mmf">🇨🇮</span><span class="mmn sm">科特迪瓦</span><span class="mmv">vs</span><span class="mmf">🇪🇨</span><span class="mmn">厄瓜多尔</span></div><div class="mmbar"><div class="sh" style="width:16%"></div><div class="sd" style="width:22%"></div><div class="sa" style="width:62%"></div></div><span class="mmp">62%</span></div>
 
-  <div class="ft"><div class="note">数据：eloratings.net · 模型：Dixon-Coles</div><div class="tags">#世界杯 #数据解读</div></div>
+  <div class="ft">
+    <div class="note">eloratings.net · Dixon-Coles</div>
+    <div class="tags">#世界杯 #数据解读</div>
+  </div>
+
 </div>
-<script>document.getElementById('current-date').textContent = new Date().toLocaleDateString('zh-CN',{month:'long',day:'numeric'})</script>
+
+<script>
+  const d = new Date();
+  const ds = (d.getMonth()+1)+'/'+d.getDate();
+  document.getElementById('current-date').textContent = ds;
+</script>
 </body>
 </html>
