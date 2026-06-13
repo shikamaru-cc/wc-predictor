@@ -6,118 +6,130 @@
   <title>世界杯数据解读</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       background: #f5f4ed;
       display: flex;
       justify-content: center;
-      align-items: flex-start;
-      min-height: 100vh;
-      padding: 12px;
+      padding: 10px;
     }
-
-    .card {
-      width: 100%;
-      max-width: 375px;
-      background: #faf9f5;
-      border-radius: 14px;
-      padding: 20px 16px 16px;
-      box-shadow: rgba(0,0,0,0.05) 0px 4px 24px;
-      border: 1px solid #f0eee6;
-    }
+    .container { width: 100%; max-width: 375px; }
 
     /* Header */
-    .hd { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:12px; }
-    .hd-left h1 { font-family: Georgia, 'Times New Roman', serif; font-size:20px; font-weight:500; color:#141413; line-height:1.2; }
-    .hd-left .sub { font-size:10px; color:#87867f; margin-top:1px; }
-    .hd-right { text-align:right; flex-shrink:0; }
-    .hd-right .date { font-size:13px; font-weight:500; color:#c96442; }
-    .hd-right .info { font-size:10px; color:#87867f; }
+    .hd {
+      background: #faf9f5;
+      border-radius: 12px;
+      padding: 14px 14px 10px;
+      margin-bottom: 8px;
+      border: 1px solid #f0eee6;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+    .hd-left h1 { font-family: Georgia, serif; font-size: 18px; font-weight: 500; color: #141413; line-height: 1.2; }
+    .hd-left .sub { font-size: 9px; color: #87867f; margin-top: 1px; }
+    .hd-right { text-align: right; }
+    .hd-right .date { font-size: 12px; font-weight: 500; color: #c96442; }
+    .hd-right .info { font-size: 9px; color: #87867f; }
 
-    /* Disclaimer - compact */
-    .disc { background:#f5f4ed; border-radius:6px; padding:5px 8px; margin-bottom:12px; border:1px solid #e8e6dc; }
-    .disc p { font-size:9px; color:#5e5d59; line-height:1.4; }
+    .disc { background: #f5f4ed; border-radius: 6px; padding: 4px 8px; margin-bottom: 8px; border: 1px solid #e8e6dc; }
+    .disc p { font-size: 8px; color: #5e5d59; line-height: 1.3; }
 
-    /* Section title */
-    .st { font-family:Georgia,serif; font-size:16px; font-weight:500; color:#141413; margin-bottom:8px; line-height:1.2; display:flex; align-items:center; gap:6px; }
-    .st::after { content:''; flex:1; height:1px; background:#e8e6dc; }
+    /* === Featured match card === */
+    .fm {
+      background: #faf9f5;
+      border-radius: 12px;
+      padding: 12px;
+      margin-bottom: 8px;
+      border: 1.5px solid #c96442;
+    }
+    .fm-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+    .tag { font-size: 8px; font-weight: 500; padding: 1px 5px; border-radius: 3px; }
+    .tag-g { background: #e8e6dc; color: #5e5d59; }
+    .tag-f { background: #c96442; color: #faf9f5; }
+    .fm-top .t { font-size: 10px; color: #87867f; }
 
-    /* Featured match */
-    .fm { background:#faf9f5; border-radius:10px; padding:12px; margin-bottom:10px; border:1px solid #d1cfc5; }
-    .fmt { display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; }
-    .tag { font-size:9px; font-weight:500; padding:1px 6px; border-radius:4px; }
-    .tg { background:#e8e6dc; color:#5e5d59; }
-    .tf { background:#c96442; color:#faf9f5; }
-    .ftm { font-size:10px; color:#87867f; }
-
-    /* Teams row */
-    .fm-bd { display:flex; align-items:center; gap:6px; margin-bottom:6px; }
-    .tm { flex:1; display:flex; align-items:center; gap:6px; }
+    .fm-teams { display: flex; align-items: center; gap: 4px; margin-bottom: 6px; }
+    .tm { flex:1; display:flex; align-items:center; gap:5px; }
     .tm.r { flex-direction:row-reverse; text-align:right; }
-    .fl { font-size:22px; width:28px; text-align:center; flex-shrink:0; }
-    .ti .n { font-size:13px; font-weight:500; color:#141413; }
-    .ti .e { font-size:9px; color:#87867f; }
-    .dlta { flex-shrink:0; text-align:center; min-width:48px; }
-    .dlta .a { font-size:11px; font-weight:500; color:#c96442; }
-    .dlta .l { font-size:8px; color:#87867f; }
+    .fl { font-size: 22px; width: 26px; text-align:center; }
+    .ti .n { font-size: 13px; font-weight: 500; color: #141413; }
+    .ti .e { font-size: 8px; color: #87867f; }
+    .dlta { text-align:center; min-width:44px; }
+    .dlta .a { font-size: 10px; font-weight: 500; color: #c96442; }
+    .dlta .l { font-size: 7px; color: #87867f; }
 
-    /* Outcome bar */
-    .ob { display:flex; align-items:center; gap:6px; margin-bottom:6px; }
-    .ob .ol { font-size:8px; color:#87867f; letter-spacing:0.3px; text-transform:uppercase; white-space:nowrap; }
-    .ob .ov { font-size:12px; font-weight:500; color:#141413; white-space:nowrap; }
-    .ob .od { width:3px; height:3px; background:#d1cfc5; border-radius:50%; flex-shrink:0; }
+    .fm-ob {
+      display:flex; align-items:center; justify-content:center; gap:4px;
+      background:#f5f4ed; border-radius:5px; padding:3px 8px; margin-bottom:5px;
+    }
+    .fm-ob .ol { font-size:7px; color:#87867f; letter-spacing:0.3px; text-transform:uppercase; }
+    .fm-ob .ov { font-size:11px; font-weight:500; color:#141413; }
+    .fm-ob .od { width:2px; height:2px; background:#d1cfc5; border-radius:50%; }
 
-    /* Prob bar */
-    .pr { display:flex; align-items:center; gap:4px; margin-bottom:6px; }
-    .pr .pl { font-size:9px; color:#5e5d59; font-weight:500; min-width:42px; text-align:right; }
+    .pr { display:flex; align-items:center; gap:3px; margin-bottom:5px; }
+    .pr .pl { font-size:8px; color:#5e5d59; font-weight:500; min-width:36px; text-align:right; }
     .pr .pl.r { text-align:left; }
-    .prt { flex:1; height:4px; background:#f0eee6; border-radius:4px; overflow:hidden; display:flex; }
+    .prt { flex:1; height:3px; background:#f0eee6; border-radius:3px; overflow:hidden; display:flex; }
     .sh { height:100%; background:#141413; }
     .sd { height:100%; background:#d1cfc5; }
     .sa { height:100%; background:#c96442; }
 
-    /* Data mini grid */
-    .dg { display:flex; gap:4px; margin-bottom:6px; }
-    .dc { flex:1; background:#f5f4ed; border-radius:6px; padding:3px 4px; text-align:center; }
-    .dc .v { font-size:11px; font-weight:500; color:#141413; }
-    .dc .l { font-size:7px; color:#87867f; line-height:1.2; }
+    .fm-dg { display:flex; gap:3px; margin-bottom:5px; }
+    .fm-dc { flex:1; background:#f5f4ed; border-radius:5px; padding:2px 4px; text-align:center; }
+    .fm-dc .v { font-size:10px; font-weight:500; color:#141413; }
+    .fm-dc .l { font-size:6px; color:#87867f; }
 
-    /* Analysis - one line only */
-    .ab { padding:4px 8px; background:#f5f4ed; border-radius:6px; border-left:1.5px solid #c96442; }
-    .ab p { font-size:9px; color:#5e5d59; line-height:1.4; }
-    .ab p strong { color:#141413; font-weight:500; }
-    .ab p .hl { color:#c96442; font-weight:500; }
+    .fm-ab { padding:3px 6px; background:#f5f4ed; border-radius:5px; border-left:1.5px solid #c96442; }
+    .fm-ab p { font-size:8px; color:#5e5d59; line-height:1.3; }
+    .fm-ab p strong { color:#141413; font-weight:500; }
+    .fm-ab p .hl { color:#c96442; font-weight:500; }
 
-    /* Mini match rows */
-    .mm { display:flex; align-items:center; padding:6px 0; border-bottom:1px solid #f0eee6; gap:4px; }
-    .mm:last-of-type { border-bottom:none; }
-    .mmt { font-size:10px; color:#87867f; min-width:34px; font-weight:500; }
-    .mmg { font-size:8px; color:#87867f; background:#f5f4ed; padding:0 5px; border-radius:3px; min-width:18px; text-align:center; }
-    .mmteams { flex:1; display:flex; align-items:center; gap:2px; min-width:0; }
-    .mmf { font-size:14px; flex-shrink:0; }
-    .mmn { font-size:11px; color:#141413; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-    .mmn.sm { color:#5e5d59; }
-    .mmv { font-size:8px; color:#d1cfc5; flex-shrink:0; }
-    .mmbar { width:32px; height:3px; background:#f0eee6; border-radius:3px; overflow:hidden; display:flex; flex-shrink:0; }
-    .mmbar .sh { height:100%; }
-    .mmbar .sd { height:100%; }
-    .mmbar .sa { height:100%; }
-    .mmp { font-size:9px; font-weight:500; color:#5e5d59; min-width:28px; text-align:center; flex-shrink:0; }
+    /* === Compact match row === */
+    .cm {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      background: #faf9f5;
+      border-radius: 10px;
+      padding: 7px 10px;
+      margin-bottom: 4px;
+      border: 1px solid #f0eee6;
+    }
+    .cm.pick {
+      border-color: #d1cfc5;
+      background: #f5f4ed;
+    }
+    .cmt { font-size: 9px; color: #87867f; min-width: 28px; font-weight: 500; }
+    .cmg { font-size: 7px; color: #87867f; background: #e8e6dc; padding: 0 4px; border-radius: 3px; min-width: 16px; text-align: center; }
+    .cm-fl { font-size: 14px; }
+    .cm-teams { flex: 1; display: flex; align-items: center; gap: 2px; min-width: 0; }
+    .cm-n { font-size: 10px; color: #141413; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .cm-n.sm { color: #5e5d59; }
+    .cm-v { font-size: 7px; color: #d1cfc5; flex-shrink: 0; }
+    .cm-elo { font-size: 7px; color: #87867f; flex-shrink: 0; }
+    .cm-bar { width: 28px; height: 3px; background: #f0eee6; border-radius: 3px; overflow: hidden; display: flex; flex-shrink: 0; }
+    .cm-p { font-size: 8px; font-weight: 500; color: #5e5d59; min-width: 24px; text-align: center; flex-shrink: 0; }
 
-    .mm-pl { background:#f5f4ed; border-radius:6px; padding:6px 0; margin:3px 0; }
+    .ft {
+      margin-top: 4px;
+      padding: 6px 12px;
+      background: #faf9f5;
+      border-radius: 12px;
+      border: 1px solid #f0eee6;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .ft .note { font-size: 7px; color: #87867f; }
+    .ft .tags { font-size: 8px; color: #5e5d59; font-weight: 500; }
 
-    .nd { display:flex; align-items:center; gap:6px; margin:3px 0; color:#87867f; font-size:8px; font-weight:500; text-transform:uppercase; letter-spacing:0.3px; }
-    .nd::after { content:''; flex:1; height:1px; background:#f0eee6; }
-
-    /* Footer */
-    .ft { margin-top:10px; padding-top:8px; border-top:1px solid #f0eee6; display:flex; justify-content:space-between; align-items:center; }
-    .ft .note { font-size:8px; color:#87867f; }
-    .ft .tags { font-size:9px; color:#5e5d59; font-weight:500; }
+    .nd { display: flex; align-items: center; gap: 6px; margin: 2px 0; color: #87867f; font-size: 7px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.3px; }
+    .nd::after { content: ''; flex: 1; height: 1px; background: #f0eee6; }
   </style>
 </head>
 <body>
-<div class="card" id="card">
+<div class="container">
 
   <div class="hd">
     <div class="hd-left">
@@ -132,51 +144,117 @@
 
   <div class="disc"><p>纯数据分析，不构成投注建议。足球⚽不确定性高。</p></div>
 
-  <div class="st">🔥 焦点战</div>
-
+  <!-- Featured: Brazil vs Morocco -->
   <div class="fm">
-    <div class="fmt">
-      <div><span class="tag tg">C组</span> <span class="tag tf">数据看点</span></div>
-      <span class="ftm">06:00</span>
+    <div class="fm-top">
+      <div><span class="tag tag-g">C组</span> <span class="tag tag-f">焦点</span></div>
+      <span class="t">06:00 · MetLife</span>
     </div>
-    <div class="fm-bd">
+    <div class="fm-teams">
       <div class="tm"><div class="fl">🇧🇷</div><div class="ti"><div class="n">巴西</div><div class="e">Elo 1991</div></div></div>
       <div class="dlta"><div class="a">Δ+164</div><div class="l">实力差</div></div>
       <div class="tm r"><div class="fl">🇲🇦</div><div class="ti"><div class="n">摩洛哥</div><div class="e">Elo 1827</div></div></div>
     </div>
-    <div class="ob">
+    <div class="fm-ob">
       <span class="ol">推演</span>
-      <span class="ov">巴西 52%</span>
-      <span class="od"></span>
-      <span class="ov">平 26%</span>
-      <span class="od"></span>
+      <span class="ov">巴西 52%</span><span class="od"></span>
+      <span class="ov">平 26%</span><span class="od"></span>
       <span class="ov">摩洛哥 22%</span>
     </div>
     <div class="pr">
-      <span class="pl">巴西 52%</span>
+      <span class="pl">52%</span>
       <div class="prt"><div class="sh" style="width:52%"></div><div class="sd" style="width:26%"></div><div class="sa" style="width:22%"></div></div>
-      <span class="pl r">摩洛哥 22%</span>
+      <span class="pl r">22%</span>
     </div>
-    <div class="dg">
-      <div class="dc"><div class="v">1.61</div><div class="l">λ预期进球</div></div>
-      <div class="dc"><div class="v">0.93</div><div class="l">λ预期进球</div></div>
-      <div class="dc"><div class="v">+164</div><div class="l">Elo差</div></div>
-      <div class="dc"><div class="v">W17D3</div><div class="l">巴西首战</div></div>
+    <div class="fm-dg">
+      <div class="fm-dc"><div class="v">λ 1.61</div><div class="l">巴西</div></div>
+      <div class="fm-dc"><div class="v">λ 0.93</div><div class="l">摩洛哥</div></div>
+      <div class="fm-dc"><div class="v">+164</div><div class="l">Elo差</div></div>
+      <div class="fm-dc"><div class="v">W17D3</div><div class="l">巴西首战</div></div>
     </div>
-    <div class="ab"><p><strong>巴西</strong>内马尔伤缺但前场充足。<strong>摩洛哥</strong>防线两核心伤缺。2023友谊赛曾<span class="hl">2-1胜巴西</span>。模型偏小胜，平局不低。</p></div>
+    <div class="fm-ab"><p><strong>巴西</strong>内马尔伤缺但前场充足。<strong>摩洛哥</strong>防线两核心伤缺。2023友谊赛曾<span class="hl">2-1胜巴西</span>。</p></div>
   </div>
 
-  <div class="st">📋 其他对阵</div>
+  <!-- Compact rows -->
+  <div class="cm">
+    <span class="cmt">03:00</span>
+    <span class="cmg">B</span>
+    <div class="cm-teams">
+      <span class="cm-fl">🇶🇦</span><span class="cm-n sm">卡塔尔</span>
+      <span class="cm-v">vs</span>
+      <span class="cm-fl">🇨🇭</span><span class="cm-n">瑞士</span>
+    </div>
+    <span class="cm-elo">1511–1891</span>
+    <div class="cm-bar"><div class="sh" style="width:15%"></div><div class="sd" style="width:22%"></div><div class="sa" style="width:63%"></div></div>
+    <span class="cm-p">63%</span>
+  </div>
 
-  <div class="mm"><span class="mmt">03:00</span><span class="mmg">B</span><div class="mmteams"><span class="mmf">🇶🇦</span><span class="mmn sm">卡塔尔</span><span class="mmv">vs</span><span class="mmf">🇨🇭</span><span class="mmn">瑞士</span></div><div class="mmbar"><div class="sh" style="width:15%"></div><div class="sd" style="width:22%"></div><div class="sa" style="width:63%"></div></div><span class="mmp">63%</span></div>
-  <div class="mm"><span class="mmt">09:00</span><span class="mmg">C</span><div class="mmteams"><span class="mmf">🇭🇹</span><span class="mmn sm">海地</span><span class="mmv">vs</span><span class="mmf">🏴󠁧󠁢󠁳󠁣󠁴󠁿</span><span class="mmn">苏格兰</span></div><div class="mmbar"><div class="sh" style="width:18%"></div><div class="sd" style="width:25%"></div><div class="sa" style="width:57%"></div></div><span class="mmp">57%</span></div>
-  <div class="mm"><span class="mmt">12:00</span><span class="mmg">D</span><div class="mmteams"><span class="mmf">🇦🇺</span><span class="mmn sm">澳大利亚</span><span class="mmv">vs</span><span class="mmf">🇹🇷</span><span class="mmn">土耳其</span></div><div class="mmbar"><div class="sh" style="width:26%"></div><div class="sd" style="width:26%"></div><div class="sa" style="width:48%"></div></div><span class="mmp">48%</span></div>
+  <div class="cm">
+    <span class="cmt">09:00</span>
+    <span class="cmg">C</span>
+    <div class="cm-teams">
+      <span class="cm-fl">🇭🇹</span><span class="cm-n sm">海地</span>
+      <span class="cm-v">vs</span>
+      <span class="cm-fl">🏴󠁧󠁢󠁳󠁣󠁴󠁿</span><span class="cm-n">苏格兰</span>
+    </div>
+    <span class="cm-elo">1548–1782</span>
+    <div class="cm-bar"><div class="sh" style="width:18%"></div><div class="sd" style="width:25%"></div><div class="sa" style="width:57%"></div></div>
+    <span class="cm-p">57%</span>
+  </div>
+
+  <div class="cm">
+    <span class="cmt">12:00</span>
+    <span class="cmg">D</span>
+    <div class="cm-teams">
+      <span class="cm-fl">🇦🇺</span><span class="cm-n sm">澳大利亚</span>
+      <span class="cm-v">vs</span>
+      <span class="cm-fl">🇹🇷</span><span class="cm-n">土耳其</span>
+    </div>
+    <span class="cm-elo">1777–1911</span>
+    <div class="cm-bar"><div class="sh" style="width:26%"></div><div class="sd" style="width:26%"></div><div class="sa" style="width:48%"></div></div>
+    <span class="cm-p">48%</span>
+  </div>
 
   <div class="nd">🌙 晚场</div>
 
-  <div class="mm"><span class="mmt">17:00</span><span class="mmg">E</span><div class="mmteams"><span class="mmf">🇩🇪</span><span class="mmn">德国</span><span class="mmv">vs</span><span class="mmf">🇨🇼</span><span class="mmn sm">库拉索</span></div><div class="mmbar"><div class="sh" style="width:87%"></div><div class="sd" style="width:9%"></div><div class="sa" style="width:4%"></div></div><span class="mmp">87%</span></div>
-  <div class="mm mm-pl"><span class="mmt">20:00</span><span class="mmg">F</span><div class="mmteams"><span class="mmf">🇳🇱</span><span class="mmn">荷兰</span><span class="mmv">vs</span><span class="mmf">🇯🇵</span><span class="mmn">日本</span></div><div class="mmbar"><div class="sh" style="width:36%"></div><div class="sd" style="width:33%"></div><div class="sa" style="width:31%"></div></div><span class="mmp">36%</span></div>
-  <div class="mm"><span class="mmt">23:00</span><span class="mmg">E</span><div class="mmteams"><span class="mmf">🇨🇮</span><span class="mmn sm">科特迪瓦</span><span class="mmv">vs</span><span class="mmf">🇪🇨</span><span class="mmn">厄瓜多尔</span></div><div class="mmbar"><div class="sh" style="width:16%"></div><div class="sd" style="width:22%"></div><div class="sa" style="width:62%"></div></div><span class="mmp">62%</span></div>
+  <div class="cm">
+    <span class="cmt">17:00</span>
+    <span class="cmg">E</span>
+    <div class="cm-teams">
+      <span class="cm-fl">🇩🇪</span><span class="cm-n">德国</span>
+      <span class="cm-v">vs</span>
+      <span class="cm-fl">🇨🇼</span><span class="cm-n sm">库拉索</span>
+    </div>
+    <span class="cm-elo">1932–1434</span>
+    <div class="cm-bar"><div class="sh" style="width:87%"></div><div class="sd" style="width:9%"></div><div class="sa" style="width:4%"></div></div>
+    <span class="cm-p">87%</span>
+  </div>
+
+  <div class="cm pick">
+    <span class="cmt">20:00</span>
+    <span class="cmg">F</span>
+    <div class="cm-teams">
+      <span class="cm-fl">🇳🇱</span><span class="cm-n">荷兰</span>
+      <span class="cm-v">vs</span>
+      <span class="cm-fl">🇯🇵</span><span class="cm-n">日本</span>
+    </div>
+    <span class="cm-elo">1948–1906</span>
+    <div class="cm-bar"><div class="sh" style="width:36%"></div><div class="sd" style="width:33%"></div><div class="sa" style="width:31%"></div></div>
+    <span class="cm-p">←五五开</span>
+  </div>
+
+  <div class="cm">
+    <span class="cmt">23:00</span>
+    <span class="cmg">E</span>
+    <div class="cm-teams">
+      <span class="cm-fl">🇨🇮</span><span class="cm-n sm">科特迪瓦</span>
+      <span class="cm-v">vs</span>
+      <span class="cm-fl">🇪🇨</span><span class="cm-n">厄瓜多尔</span>
+    </div>
+    <span class="cm-elo">1695–1938</span>
+    <div class="cm-bar"><div class="sh" style="width:16%"></div><div class="sd" style="width:22%"></div><div class="sa" style="width:62%"></div></div>
+    <span class="cm-p">62%</span>
+  </div>
 
   <div class="ft">
     <div class="note">eloratings.net · Dixon-Coles</div>
@@ -184,11 +262,6 @@
   </div>
 
 </div>
-
-<script>
-  const d = new Date();
-  const ds = (d.getMonth()+1)+'/'+d.getDate();
-  document.getElementById('current-date').textContent = ds;
-</script>
+<script>document.getElementById('current-date').textContent=(new Date().getMonth()+1)+'/'+new Date().getDate();</script>
 </body>
 </html>
