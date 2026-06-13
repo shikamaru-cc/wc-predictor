@@ -11,257 +11,185 @@
       background: #f5f4ed;
       display: flex;
       justify-content: center;
-      padding: 10px;
+      padding: 16px 12px;
     }
-    .container { width: 100%; max-width: 375px; }
+    .list { width: 100%; max-width: 375px; }
 
     /* Header */
     .hd {
       background: #faf9f5;
-      border-radius: 12px;
-      padding: 14px 14px 10px;
-      margin-bottom: 8px;
+      border-radius: 14px;
+      padding: 18px 16px 14px;
+      margin-bottom: 10px;
       border: 1px solid #f0eee6;
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
     }
-    .hd-left h1 { font-family: Georgia, serif; font-size: 18px; font-weight: 500; color: #141413; line-height: 1.2; }
-    .hd-left .sub { font-size: 9px; color: #87867f; margin-top: 1px; }
+    .hd-left h1 { font-family: Georgia, serif; font-size: 22px; font-weight: 500; color: #141413; line-height: 1.2; }
+    .hd-left .sub { font-size: 10px; color: #87867f; margin-top: 2px; }
     .hd-right { text-align: right; }
-    .hd-right .date { font-size: 12px; font-weight: 500; color: #c96442; }
-    .hd-right .info { font-size: 9px; color: #87867f; }
+    .hd-right .date { font-size: 14px; font-weight: 500; color: #c96442; }
+    .hd-right .info { font-size: 10px; color: #87867f; }
 
-    .disc { background: #f5f4ed; border-radius: 6px; padding: 4px 8px; margin-bottom: 8px; border: 1px solid #e8e6dc; }
-    .disc p { font-size: 8px; color: #5e5d59; line-height: 1.3; }
+    .disc { background:#f5f4ed; border-radius:8px; padding:6px 10px; margin-bottom:10px; border:1px solid #e8e6dc; }
+    .disc p { font-size:9px; color:#5e5d59; line-height:1.4; }
 
-    /* === Featured match card === */
-    .fm {
-      background: #faf9f5;
-      border-radius: 12px;
-      padding: 12px;
-      margin-bottom: 8px;
-      border: 1.5px solid #c96442;
-    }
-    .fm-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
-    .tag { font-size: 8px; font-weight: 500; padding: 1px 5px; border-radius: 3px; }
-    .tag-g { background: #e8e6dc; color: #5e5d59; }
-    .tag-f { background: #c96442; color: #faf9f5; }
-    .fm-top .t { font-size: 10px; color: #87867f; }
+    /* Section label */
+    .sec { display:flex; align-items:center; gap:6px; margin-bottom:8px; }
+    .sec span { font-family:Georgia,serif; font-size:15px; font-weight:500; color:#141413; }
+    .sec::after { content:''; flex:1; height:1px; background:#e8e6dc; }
 
-    .fm-teams { display: flex; align-items: center; gap: 4px; margin-bottom: 6px; }
-    .tm { flex:1; display:flex; align-items:center; gap:5px; }
-    .tm.r { flex-direction:row-reverse; text-align:right; }
-    .fl { font-size: 22px; width: 26px; text-align:center; }
-    .ti .n { font-size: 13px; font-weight: 500; color: #141413; }
-    .ti .e { font-size: 8px; color: #87867f; }
-    .dlta { text-align:center; min-width:44px; }
-    .dlta .a { font-size: 10px; font-weight: 500; color: #c96442; }
-    .dlta .l { font-size: 7px; color: #87867f; }
-
-    .fm-ob {
-      display:flex; align-items:center; justify-content:center; gap:4px;
-      background:#f5f4ed; border-radius:5px; padding:3px 8px; margin-bottom:5px;
-    }
-    .fm-ob .ol { font-size:7px; color:#87867f; letter-spacing:0.3px; text-transform:uppercase; }
-    .fm-ob .ov { font-size:11px; font-weight:500; color:#141413; }
-    .fm-ob .od { width:2px; height:2px; background:#d1cfc5; border-radius:50%; }
-
-    .pr { display:flex; align-items:center; gap:3px; margin-bottom:5px; }
-    .pr .pl { font-size:8px; color:#5e5d59; font-weight:500; min-width:36px; text-align:right; }
-    .pr .pl.r { text-align:left; }
-    .prt { flex:1; height:3px; background:#f0eee6; border-radius:3px; overflow:hidden; display:flex; }
-    .sh { height:100%; background:#141413; }
-    .sd { height:100%; background:#d1cfc5; }
-    .sa { height:100%; background:#c96442; }
-
-    .fm-dg { display:flex; gap:3px; margin-bottom:5px; }
-    .fm-dc { flex:1; background:#f5f4ed; border-radius:5px; padding:2px 4px; text-align:center; }
-    .fm-dc .v { font-size:10px; font-weight:500; color:#141413; }
-    .fm-dc .l { font-size:6px; color:#87867f; }
-
-    .fm-ab { padding:3px 6px; background:#f5f4ed; border-radius:5px; border-left:1.5px solid #c96442; }
-    .fm-ab p { font-size:8px; color:#5e5d59; line-height:1.3; }
-    .fm-ab p strong { color:#141413; font-weight:500; }
-    .fm-ab p .hl { color:#c96442; font-weight:500; }
-
-    /* === Compact match row === */
-    .cm {
+    /* List item - clickable */
+    .item {
       display: flex;
       align-items: center;
-      gap: 4px;
+      gap: 6px;
       background: #faf9f5;
-      border-radius: 10px;
-      padding: 7px 10px;
-      margin-bottom: 4px;
+      border-radius: 12px;
+      padding: 10px 12px;
+      margin-bottom: 5px;
       border: 1px solid #f0eee6;
+      text-decoration: none;
+      transition: all 0.1s;
     }
-    .cm.pick {
-      border-color: #d1cfc5;
-      background: #f5f4ed;
-    }
-    .cmt { font-size: 9px; color: #87867f; min-width: 28px; font-weight: 500; }
-    .cmg { font-size: 7px; color: #87867f; background: #e8e6dc; padding: 0 4px; border-radius: 3px; min-width: 16px; text-align: center; }
-    .cm-fl { font-size: 14px; }
-    .cm-teams { flex: 1; display: flex; align-items: center; gap: 2px; min-width: 0; }
-    .cm-n { font-size: 10px; color: #141413; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .cm-n.sm { color: #5e5d59; }
-    .cm-v { font-size: 7px; color: #d1cfc5; flex-shrink: 0; }
-    .cm-elo { font-size: 7px; color: #87867f; flex-shrink: 0; }
-    .cm-bar { width: 28px; height: 3px; background: #f0eee6; border-radius: 3px; overflow: hidden; display: flex; flex-shrink: 0; }
-    .cm-p { font-size: 8px; font-weight: 500; color: #5e5d59; min-width: 24px; text-align: center; flex-shrink: 0; }
+    .item:active { background: #f0eee6; transform: scale(0.98); }
+    .item.featured { border-color: #c96442; border-width: 1.5px; }
+
+    .item-time { font-size: 10px; color: #87867f; min-width: 28px; font-weight: 500; }
+    .item-group { font-size: 8px; color: #87867f; background: #e8e6dc; padding: 0 5px; border-radius: 3px; min-width: 16px; text-align: center; }
+    .item-teams { flex: 1; display: flex; align-items: center; gap: 3px; min-width: 0; }
+    .item-fl { font-size: 16px; }
+    .item-n { font-size: 12px; color: #141413; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .item-n.sm { color: #5e5d59; }
+    .item-v { font-size: 8px; color: #d1cfc5; flex-shrink: 0; }
+    .item-arrow { font-size: 14px; color: #d1cfc5; flex-shrink: 0; }
+
+    .item-tag { font-size: 7px; padding: 1px 5px; border-radius: 3px; font-weight: 500; }
+    .item-tag.f { background: #c96442; color: #faf9f5; }
+    .item-tag.p { background: #141413; color: #b0aea5; }
+
+    .nd { display:flex; align-items:center; gap:6px; margin:4px 0; color:#87867f; font-size:8px; font-weight:500; text-transform:uppercase; letter-spacing:0.3px; }
+    .nd::after { content:''; flex:1; height:1px; background:#f0eee6; }
 
     .ft {
-      margin-top: 4px;
-      padding: 6px 12px;
+      margin-top: 8px;
+      padding: 8px 14px;
       background: #faf9f5;
       border-radius: 12px;
       border: 1px solid #f0eee6;
       display: flex;
       justify-content: space-between;
-      align-items: center;
     }
-    .ft .note { font-size: 7px; color: #87867f; }
-    .ft .tags { font-size: 8px; color: #5e5d59; font-weight: 500; }
-
-    .nd { display: flex; align-items: center; gap: 6px; margin: 2px 0; color: #87867f; font-size: 7px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.3px; }
-    .nd::after { content: ''; flex: 1; height: 1px; background: #f0eee6; }
+    .ft span { font-size: 8px; color: #87867f; }
   </style>
 </head>
 <body>
-<div class="container">
+<div class="list">
 
   <div class="hd">
     <div class="hd-left">
-      <h1>⚽ 世界杯数据解读</h1>
+      <h1>⚽ 世界杯数据</h1>
       <div class="sub">Elo · 泊松模型</div>
     </div>
     <div class="hd-right">
-      <div class="date" id="current-date">6/14</div>
+      <div class="date" id="cur-date">6/14</div>
       <div class="info">小组赛</div>
     </div>
   </div>
 
-  <div class="disc"><p>纯数据分析，不构成投注建议。足球⚽不确定性高。</p></div>
+  <div class="disc"><p>点击卡片查看单场详细数据解读</p></div>
 
-  <!-- Featured: Brazil vs Morocco -->
-  <div class="fm">
-    <div class="fm-top">
-      <div><span class="tag tag-g">C组</span> <span class="tag tag-f">焦点</span></div>
-      <span class="t">06:00 · MetLife</span>
-    </div>
-    <div class="fm-teams">
-      <div class="tm"><div class="fl">🇧🇷</div><div class="ti"><div class="n">巴西</div><div class="e">Elo 1991</div></div></div>
-      <div class="dlta"><div class="a">Δ+164</div><div class="l">实力差</div></div>
-      <div class="tm r"><div class="fl">🇲🇦</div><div class="ti"><div class="n">摩洛哥</div><div class="e">Elo 1827</div></div></div>
-    </div>
-    <div class="fm-ob">
-      <span class="ol">推演</span>
-      <span class="ov">巴西 52%</span><span class="od"></span>
-      <span class="ov">平 26%</span><span class="od"></span>
-      <span class="ov">摩洛哥 22%</span>
-    </div>
-    <div class="pr">
-      <span class="pl">52%</span>
-      <div class="prt"><div class="sh" style="width:52%"></div><div class="sd" style="width:26%"></div><div class="sa" style="width:22%"></div></div>
-      <span class="pl r">22%</span>
-    </div>
-    <div class="fm-dg">
-      <div class="fm-dc"><div class="v">λ 1.61</div><div class="l">巴西</div></div>
-      <div class="fm-dc"><div class="v">λ 0.93</div><div class="l">摩洛哥</div></div>
-      <div class="fm-dc"><div class="v">+164</div><div class="l">Elo差</div></div>
-      <div class="fm-dc"><div class="v">W17D3</div><div class="l">巴西首战</div></div>
-    </div>
-    <div class="fm-ab"><p><strong>巴西</strong>内马尔伤缺但前场充足。<strong>摩洛哥</strong>防线两核心伤缺。2023友谊赛曾<span class="hl">2-1胜巴西</span>。</p></div>
-  </div>
+  <div class="sec"><span>🔥 今日预测</span></div>
 
-  <!-- Compact rows -->
-  <div class="cm">
-    <span class="cmt">03:00</span>
-    <span class="cmg">B</span>
-    <div class="cm-teams">
-      <span class="cm-fl">🇶🇦</span><span class="cm-n sm">卡塔尔</span>
-      <span class="cm-v">vs</span>
-      <span class="cm-fl">🇨🇭</span><span class="cm-n">瑞士</span>
+  <!-- 焦点战 -->
+  <a class="item featured" href="match/brazil-morocco.html">
+    <span class="item-time">06:00</span>
+    <span class="item-group">C</span>
+    <div class="item-teams">
+      <span class="item-fl">🇧🇷</span><span class="item-n">巴西</span>
+      <span class="item-v">vs</span>
+      <span class="item-fl">🇲🇦</span><span class="item-n sm">摩洛哥</span>
     </div>
-    <span class="cm-elo">1511–1891</span>
-    <div class="cm-bar"><div class="sh" style="width:15%"></div><div class="sd" style="width:22%"></div><div class="sa" style="width:63%"></div></div>
-    <span class="cm-p">63%</span>
-  </div>
+    <span class="item-tag f">焦点</span>
+    <span class="item-arrow">›</span>
+  </a>
 
-  <div class="cm">
-    <span class="cmt">09:00</span>
-    <span class="cmg">C</span>
-    <div class="cm-teams">
-      <span class="cm-fl">🇭🇹</span><span class="cm-n sm">海地</span>
-      <span class="cm-v">vs</span>
-      <span class="cm-fl">🏴󠁧󠁢󠁳󠁣󠁴󠁿</span><span class="cm-n">苏格兰</span>
+  <a class="item" href="match/qatar-switzerland.html">
+    <span class="item-time">03:00</span>
+    <span class="item-group">B</span>
+    <div class="item-teams">
+      <span class="item-fl">🇶🇦</span><span class="item-n sm">卡塔尔</span>
+      <span class="item-v">vs</span>
+      <span class="item-fl">🇨🇭</span><span class="item-n">瑞士</span>
     </div>
-    <span class="cm-elo">1548–1782</span>
-    <div class="cm-bar"><div class="sh" style="width:18%"></div><div class="sd" style="width:25%"></div><div class="sa" style="width:57%"></div></div>
-    <span class="cm-p">57%</span>
-  </div>
+    <span class="item-arrow">›</span>
+  </a>
 
-  <div class="cm">
-    <span class="cmt">12:00</span>
-    <span class="cmg">D</span>
-    <div class="cm-teams">
-      <span class="cm-fl">🇦🇺</span><span class="cm-n sm">澳大利亚</span>
-      <span class="cm-v">vs</span>
-      <span class="cm-fl">🇹🇷</span><span class="cm-n">土耳其</span>
+  <a class="item" href="match/haiti-scotland.html">
+    <span class="item-time">09:00</span>
+    <span class="item-group">C</span>
+    <div class="item-teams">
+      <span class="item-fl">🇭🇹</span><span class="item-n sm">海地</span>
+      <span class="item-v">vs</span>
+      <span class="item-fl">🏴󠁧󠁢󠁳󠁣󠁴󠁿</span><span class="item-n">苏格兰</span>
     </div>
-    <span class="cm-elo">1777–1911</span>
-    <div class="cm-bar"><div class="sh" style="width:26%"></div><div class="sd" style="width:26%"></div><div class="sa" style="width:48%"></div></div>
-    <span class="cm-p">48%</span>
-  </div>
+    <span class="item-arrow">›</span>
+  </a>
+
+  <a class="item" href="match/australia-turkey.html">
+    <span class="item-time">12:00</span>
+    <span class="item-group">D</span>
+    <div class="item-teams">
+      <span class="item-fl">🇦🇺</span><span class="item-n sm">澳大利亚</span>
+      <span class="item-v">vs</span>
+      <span class="item-fl">🇹🇷</span><span class="item-n">土耳其</span>
+    </div>
+    <span class="item-arrow">›</span>
+  </a>
 
   <div class="nd">🌙 晚场</div>
 
-  <div class="cm">
-    <span class="cmt">17:00</span>
-    <span class="cmg">E</span>
-    <div class="cm-teams">
-      <span class="cm-fl">🇩🇪</span><span class="cm-n">德国</span>
-      <span class="cm-v">vs</span>
-      <span class="cm-fl">🇨🇼</span><span class="cm-n sm">库拉索</span>
+  <a class="item" href="match/germany-curacao.html">
+    <span class="item-time">17:00</span>
+    <span class="item-group">E</span>
+    <div class="item-teams">
+      <span class="item-fl">🇩🇪</span><span class="item-n">德国</span>
+      <span class="item-v">vs</span>
+      <span class="item-fl">🇨🇼</span><span class="item-n sm">库拉索</span>
     </div>
-    <span class="cm-elo">1932–1434</span>
-    <div class="cm-bar"><div class="sh" style="width:87%"></div><div class="sd" style="width:9%"></div><div class="sa" style="width:4%"></div></div>
-    <span class="cm-p">87%</span>
-  </div>
+    <span class="item-arrow">›</span>
+  </a>
 
-  <div class="cm pick">
-    <span class="cmt">20:00</span>
-    <span class="cmg">F</span>
-    <div class="cm-teams">
-      <span class="cm-fl">🇳🇱</span><span class="cm-n">荷兰</span>
-      <span class="cm-v">vs</span>
-      <span class="cm-fl">🇯🇵</span><span class="cm-n">日本</span>
+  <a class="item" href="match/netherlands-japan.html">
+    <span class="item-time">20:00</span>
+    <span class="item-group">F</span>
+    <div class="item-teams">
+      <span class="item-fl">🇳🇱</span><span class="item-n">荷兰</span>
+      <span class="item-v">vs</span>
+      <span class="item-fl">🇯🇵</span><span class="item-n">日本</span>
     </div>
-    <span class="cm-elo">1948–1906</span>
-    <div class="cm-bar"><div class="sh" style="width:36%"></div><div class="sd" style="width:33%"></div><div class="sa" style="width:31%"></div></div>
-    <span class="cm-p">←五五开</span>
-  </div>
+    <span class="item-tag p">关注</span>
+    <span class="item-arrow">›</span>
+  </a>
 
-  <div class="cm">
-    <span class="cmt">23:00</span>
-    <span class="cmg">E</span>
-    <div class="cm-teams">
-      <span class="cm-fl">🇨🇮</span><span class="cm-n sm">科特迪瓦</span>
-      <span class="cm-v">vs</span>
-      <span class="cm-fl">🇪🇨</span><span class="cm-n">厄瓜多尔</span>
+  <a class="item" href="match/ivorycoast-ecuador.html">
+    <span class="item-time">23:00</span>
+    <span class="item-group">E</span>
+    <div class="item-teams">
+      <span class="item-fl">🇨🇮</span><span class="item-n sm">科特迪瓦</span>
+      <span class="item-v">vs</span>
+      <span class="item-fl">🇪🇨</span><span class="item-n">厄瓜多尔</span>
     </div>
-    <span class="cm-elo">1695–1938</span>
-    <div class="cm-bar"><div class="sh" style="width:16%"></div><div class="sd" style="width:22%"></div><div class="sa" style="width:62%"></div></div>
-    <span class="cm-p">62%</span>
-  </div>
+    <span class="item-arrow">›</span>
+  </a>
 
   <div class="ft">
-    <div class="note">eloratings.net · Dixon-Coles</div>
-    <div class="tags">#世界杯 #数据解读</div>
+    <span>eloratings.net · Dixon-Coles</span>
+    <span>#世界杯</span>
   </div>
 
 </div>
-<script>document.getElementById('current-date').textContent=(new Date().getMonth()+1)+'/'+new Date().getDate();</script>
+<script>document.getElementById('cur-date').textContent=(new Date().getMonth()+1)+'/'+new Date().getDate();</script>
 </body>
 </html>
